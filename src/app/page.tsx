@@ -7,7 +7,7 @@ const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const handleThemeChange = (event) => {
+    const handleThemeChange = (event: MediaQueryListEvent) => {
       setIsDarkMode(event.matches);
     };
 
@@ -89,15 +89,15 @@ const Home = () => {
   return (
     <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} ${isDarkMode ? 'text-white' : 'text-black'} py-24 ${isDarkMode ? 'dark' : ''}`}>
       {/* Hero Section */}
-	<div className="relative mb-4 flex items-center justify-center">
-          <Image
-            src="/EaglesRingLogo.png"
-            alt="Eagles Ring Logo"
-            width={200}
-            height={80}
-            className="dark:invert"
-          />
-	</div>
+      <div className="relative mb-4 flex items-center justify-center">
+        <Image
+          src="/EaglesRingLogo.png"
+          alt="Eagles Ring Logo"
+          width={200}
+          height={80}
+          className="dark:invert"
+        />
+      </div>
       <div className="container mx-auto text-center">
         <h1 className={`${fontSize} lg:text-6xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-black'}`}>
           Welcome to <span className="text-gold-500">Eagles Ring</span>
@@ -106,9 +106,8 @@ const Home = () => {
           Connecting aspiring entrepreneurs with investment opportunities.
         </p>
         <button className={`bg-yellow-500 ${isDarkMode ? 'text-gray-900' : 'text-white'} font-bold py-3 px-6 rounded-lg shadow-lg`}>
-  Get Started
-</button>
-
+          Get Started
+        </button>
       </div>
 
       {/* Features Section */}
