@@ -8,16 +8,17 @@ const AboutUs = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const handleThemeChange = (event) => {
+    const handleThemeChange = (event: MediaQueryListEvent) => {
       setIsDarkMode(event.matches);
     };
 
-    setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mediaQueryList.matches);
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleThemeChange);
+    mediaQueryList.addEventListener('change', handleThemeChange);
 
     return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', handleThemeChange);
+      mediaQueryList.removeEventListener('change', handleThemeChange);
     };
   }, []);
 

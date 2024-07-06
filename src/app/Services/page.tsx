@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 // src/pages/services.tsx
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -7,7 +8,7 @@ const Services = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const handleThemeChange = (event) => {
+    const handleThemeChange = (event: MediaQueryListEvent) => {
       setIsDarkMode(event.matches);
     };
 
@@ -93,5 +94,3 @@ const Services = () => {
 };
 
 export default Services;
-
-
