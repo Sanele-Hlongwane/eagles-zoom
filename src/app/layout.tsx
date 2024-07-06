@@ -10,8 +10,8 @@ import Footer from '../components/Footer';
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Expense Tracker',
-  description: 'Track your expenses and create a budget',
+  title: 'Eagles Ring',
+  description: 'Find Investments ooportunities and investors',
 };
 
 export default function RootLayout({

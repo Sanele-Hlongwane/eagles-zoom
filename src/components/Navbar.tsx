@@ -31,7 +31,7 @@ const NavBar = () => {
         <div className="text-xl font-bold">
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <Image src="/eagle.png" alt="Eagles Ring Logo" width={40} height={40} />
+              <Image src="/Eagle.png" alt="Eagles Ring Logo" width={40} height={40} />
               <h1 className="text-yellow-500 hover:text-yellow-400 text-2xl font-bold transition-colors duration-300">
                 Eagles Ring
               </h1>
