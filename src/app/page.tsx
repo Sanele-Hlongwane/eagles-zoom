@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const Home = () => {
@@ -87,7 +87,7 @@ const Home = () => {
   ];
 
   return (
-    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} ${isDarkMode ? 'text-white' : 'text-black'} py-24 ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} text-${isDarkMode ? 'white' : 'black'} py-24 ${isDarkMode ? 'dark' : ''}`}>
       {/* Hero Section */}
       <div className="relative mb-4 flex items-center justify-center">
         <Image
@@ -98,7 +98,7 @@ const Home = () => {
           className="dark:invert"
         />
       </div>
-      <div className="container mx-auto text-center">
+      <div className="container mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h1 className={`${fontSize} lg:text-6xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-black'}`}>
           Welcome to <span className="text-gold-500">Eagles Ring</span>
         </h1>
@@ -111,7 +111,7 @@ const Home = () => {
       </div>
 
       {/* Features Section */}
-      <div className="container mx-auto text-center mt-16">
+      <div className="container mx-auto text-center mt-16 px-4 sm:px-6 lg:px-8">
         <h2 className={`text-4xl font-bold mb-12 ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>Our Features</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
@@ -124,7 +124,7 @@ const Home = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="container mx-auto px-4 mt-16">
+      <div className="container mx-auto px-4 mt-16 sm:px-6 lg:px-8">
         <h2 className={`text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>Testimonials</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
