@@ -39,7 +39,7 @@ export default function App() {
             </div>
           </div>
           <div className="hidden sm:block">
-            <div className="ml-4 flex items-center md:ml-6">
+            <div className="ml-4 flex items-center md:ml-6 space-x-4">
               <SignedOut>
                 <div className="text-black hover:text-yellow-500 cursor-pointer">
                   <SignInButton />
@@ -110,7 +110,9 @@ export default function App() {
             </div>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <div onClick={handleMenuItemClick} className="block px-3 py-2 rounded-md text-base font-medium cursor-pointer">
+              <UserButton />
+            </div>
           </SignedIn>
         </div>
       </div>
