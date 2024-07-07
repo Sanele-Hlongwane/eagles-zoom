@@ -6,7 +6,7 @@ const TermsAndConditions = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const handleThemeChange = (event) => {
+    const handleThemeChange = (event: MediaQueryListEvent) => {
       setIsDarkMode(event.matches);
     };
 
@@ -34,42 +34,6 @@ const TermsAndConditions = () => {
 
   return (
     <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} text-${isDarkMode ? 'white' : 'black'} py-24 ${isDarkMode ? 'dark' : ''}`} style={{ width: '100vw' }}>
-      {/* Navigation Section */}
-      <nav className={`bg-${isDarkMode ? 'gray-800' : 'white'} backdrop-blur-lg shadow-lg fixed top-0 left-0 right-0 z-50`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="flex items-center space-x-2 cursor-pointer">
-                  <Image src="/EaglesRingLogo.png" alt="Eagles Ring Logo" width={40} height={40} />
-                </div>
-              </div>
-              <div className="hidden sm:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  <a href="/" className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} transition-colors duration-300 hover:text-yellow-500`}>Home</a>
-                  <a href="/about" className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} transition-colors duration-300 hover:text-yellow-500`}>About</a>
-                  <a href="/services" className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} transition-colors duration-300 hover:text-yellow-500`}>Services</a>
-                  <a href="/contact" className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} transition-colors duration-300 hover:text-yellow-500`}>Contact Us</a>
-                  <a href="/terms" className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} transition-colors duration-300 hover:text-yellow-500`}>Terms and Conditions</a>
-                </div>
-              </div>
-            </div>
-            <div className="hidden sm:block">
-              <div className="ml-4 flex items-center md:ml-6">
-                {/* Implement SignIn and User buttons here */}
-              </div>
-            </div>
-            <div className="-mr-2 flex sm:hidden">
-              <button
-                // Implement menu button here
-              >
-                {/* Menu button SVG */}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Terms and Conditions Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <div className="bg-white/30 backdrop-blur-lg shadow-lg rounded-lg p-8">
@@ -85,11 +49,11 @@ const TermsAndConditions = () => {
           <section className={`mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
             <h2 className="text-2xl font-semibold mb-4">2. Definitions</h2>
             <ul className="list-disc list-inside mb-4">
-              <li><span className="font-semibold">"Eagles Ring"</span> refers to the application and services provided by [Your Company Name].</li>
-              <li><span className="font-semibold">"User"</span> refers to anyone who uses the Eagles Ring application.</li>
-              <li><span className="font-semibold">"Entrepreneur"</span> refers to users who pitch their business models on Eagles Ring.</li>
-              <li><span className="font-semibold">"Eagle"</span> refers to investors who review and potentially invest in business models on Eagles Ring.</li>
-              <li><span className="font-semibold">"Content"</span> refers to all information, data, text, software, graphics, or other materials uploaded, downloaded, or appearing on the application.</li>
+              <li><span className="font-semibold">&quot;Eagles Ring&quot;</span> refers to the application and services provided by [Your Company Name].</li>
+              <li><span className="font-semibold">&quot;User&quot;</span> refers to anyone who uses the Eagles Ring application.</li>
+              <li><span className="font-semibold">&quot;Entrepreneur&quot;</span> refers to users who pitch their business models on Eagles Ring.</li>
+              <li><span className="font-semibold">&quot;Eagle&quot;</span> refers to investors who review and potentially invest in business models on Eagles Ring.</li>
+              <li><span className="font-semibold">&quot;Content&quot;</span> refers to all information, data, text, software, graphics, or other materials uploaded, downloaded, or appearing on the application.</li>
             </ul>
           </section>
 
@@ -126,7 +90,7 @@ const TermsAndConditions = () => {
           {/* Section 7: Modifications */}
           <section className={`mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
             <h2 className="text-2xl font-semibold mb-4">7. Modifications</h2>
-            <p className="mb-4">We reserve the right, at our sole discretion, to modify or replace these Terms and Conditions at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+            <p className="mb-4">We reserve the right, at our sole discretion, to modify or replace these Terms and Conditions at any time. If a revision is material, we will try to provide at least 30 days&apos; notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
           </section>
 
           {/* Section 8: Termination */}

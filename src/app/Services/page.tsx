@@ -1,6 +1,4 @@
 'use client';
-
-// src/pages/services.tsx
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -24,7 +22,6 @@ const Services = () => {
   return (
     <div className={`bg-${isDarkMode ? 'gray-900' : 'white'} text-${isDarkMode ? 'white' : 'black'} py-24`} style={{ width: '100vw' }}>
       <div className="container mx-auto text-center">
-        {/* Hero Section */}
         <h1 className="text-5xl lg:text-7xl font-bold mb-4 text-gray-300">Our Services</h1>
         <p className="text-lg lg:text-xl mb-8">
           Connecting innovative ideas with strategic investments.
@@ -35,10 +32,8 @@ const Services = () => {
           </button>
         </Link>
 
-        {/* Service Offerings Section */}
         <section id="service-section" className="mt-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Service Card 1: For Entrepreneurs */}
             <div className={`bg-${isDarkMode ? 'gray-800' : 'gray-200'} p-8 rounded-lg`}>
               <h2 className="text-3xl font-bold mb-4">For Entrepreneurs</h2>
               <p className="text-lg mb-4">
@@ -49,14 +44,13 @@ const Services = () => {
                 <li>Mentorship and guidance</li>
                 <li>Networking opportunities</li>
               </ul>
-              <Link href="#apply-section">
+              <Link href="/sign-up">
                 <button className={`bg-yellow-500 ${isDarkMode ? 'text-gray-900' : 'text-white'} font-bold py-3 px-6 rounded-lg shadow-lg`}>
                   Apply Now
                 </button>
               </Link>
             </div>
 
-            {/* Service Card 2: For Investors */}
             <div className={`bg-${isDarkMode ? 'gray-800' : 'gray-200'} p-8 rounded-lg`} id="investor-section">
               <h2 className="text-3xl font-bold mb-4">For Investors</h2>
               <p className="text-lg mb-4">
@@ -76,7 +70,6 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Call-to-Action */}
         <section id="apply-section" className="mt-16">
           <h2 className="text-3xl lg:text-5xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg lg:text-xl mb-8">
