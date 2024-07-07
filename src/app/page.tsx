@@ -87,7 +87,7 @@ const Home = () => {
   ];
 
   return (
-    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} text-${isDarkMode ? 'white' : 'black'} py-24 ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} text-${isDarkMode ? 'white' : 'black'} py-24 ${isDarkMode ? 'dark' : ''}`} style={{ width: '100vw' }}>
       {/* Hero Section */}
       <div className="relative mb-4 flex items-center justify-center">
         <Image

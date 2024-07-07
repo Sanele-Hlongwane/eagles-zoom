@@ -22,7 +22,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className={`bg-${isDarkMode ? 'gray-900' : 'white'} text-${isDarkMode ? 'white' : 'black'} py-24`}>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'white'} text-${isDarkMode ? 'white' : 'black'} py-24`} style={{ width: '100vw' }}>
       <div className="container mx-auto text-center">
         {/* Hero Section */}
         <h1 className="text-5xl lg:text-7xl font-bold mb-4 text-gray-300">Our Services</h1>

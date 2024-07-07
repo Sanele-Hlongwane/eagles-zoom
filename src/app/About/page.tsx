@@ -31,7 +31,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} ${isDarkMode ? 'text-white' : 'text-black'} py-24`}>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} ${isDarkMode ? 'text-white' : 'text-black'} py-24`} style={{ width: '100vw' }}>
       <div className="container mx-auto text-center pt-20 max-w-screen-md">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">
           About <span className="text-gold-500">Eagles Ring</span>

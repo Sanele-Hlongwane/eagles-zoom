@@ -4,8 +4,9 @@ import { checkUser } from '@/lib/checkUser';
 const Footer = async () => {
   const user = await checkUser();
   console.log(user);
+
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className="bg-black text-white py-8 shadow-lg" style={{ width: '100vw' }}>
       <div className="container mx-auto text-center">
         <p className="text-sm lg:text-base mb-4">&copy; 2024 Eagles Ring. All rights reserved.</p>
         <p className="text-xs lg:text-sm mb-2">Contact us: contact@eaglesring.com</p>

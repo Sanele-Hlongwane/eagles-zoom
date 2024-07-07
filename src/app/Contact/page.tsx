@@ -70,7 +70,7 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <div className={`bg-${isDarkMode ? 'gray-900' : 'white'} text-${isDarkMode ? 'white' : 'black'} min-h-screen py-16 px-4`}>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'white'} text-${isDarkMode ? 'white' : 'black'} min-h-screen py-16 px-4`} style={{ width: '100vw' }}>
       <div className="max-w-7xl mx-auto pt-20">
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact Us</h1>
