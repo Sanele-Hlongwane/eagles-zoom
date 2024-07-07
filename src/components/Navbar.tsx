@@ -14,6 +14,10 @@ export default function App() {
     { name: "Contact Us", link: "/Contact" },
   ];
 
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="bg-white/30 backdrop-blur-lg shadow-lg fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,11 +101,11 @@ export default function App() {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {menuItems.map((item, index) => (
             <Link key={index} href={item.link} passHref>
-              <p className="text-gray-800 block px-3 py-2 rounded-md text-base font-medium hover:text-yellow-500">{item.name}</p>
+              <p onClick={handleMenuItemClick} className="text-gray-800 block px-3 py-2 rounded-md text-base font-medium hover:text-yellow-500">{item.name}</p>
             </Link>
           ))}
           <SignedOut>
-            <div className="text-black hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">
+            <div onClick={handleMenuItemClick} className="text-black hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">
               <SignInButton />
             </div>
           </SignedOut>
