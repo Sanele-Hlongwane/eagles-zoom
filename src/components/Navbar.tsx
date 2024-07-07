@@ -37,7 +37,7 @@ export default function App() {
           <div className="hidden sm:block">
             <div className="ml-4 flex items-center md:ml-6">
               <SignedOut>
-                <div className="hover:text-yellow-500">
+                <div className="text-black hover:text-yellow-500 cursor-pointer">
                   <SignInButton />
                 </div>
               </SignedOut>
@@ -101,7 +101,7 @@ export default function App() {
             </Link>
           ))}
           <SignedOut>
-            <div className="text-lg lg:text-base text-white group hover:text-blue-500 cursor-pointer">
+            <div className="text-black hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">
               <SignInButton />
             </div>
           </SignedOut>
