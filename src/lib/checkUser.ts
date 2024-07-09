@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const checkUser = async (selectedRole: string | null) => {
+export const checkUser = async () => {
   const user = await currentUser();
 
   if (!user) {
