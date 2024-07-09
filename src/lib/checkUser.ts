@@ -1,18 +1,21 @@
-// lib/checkUser.ts
-
 import { currentUser } from "@clerk/nextjs/server";
-import { db } from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
 
-export const checkUser = async () => {
+const prisma = new PrismaClient();
+
+export const checkUser = async (selectedRole: string | null) => {
   const user = await currentUser();
 
   if (!user) {
     return null;
   }
 
-  let loggedInUser = await db.user.findUnique({
+  let loggedInUser = await prisma.user.findUnique({
     where: {
       clerkId: user.id,
+    },
+    include: {
+      role: true, // Include the role in the query
     },
   });
 
@@ -20,14 +23,17 @@ export const checkUser = async () => {
     return loggedInUser;
   }
 
-  loggedInUser = await db.user.findUnique({
+  loggedInUser = await prisma.user.findUnique({
     where: {
       email: user.emailAddresses[0].emailAddress,
+    },
+    include: {
+      role: true, // Include the role in the query
     },
   });
 
   if (loggedInUser) {
-    loggedInUser = await db.user.update({
+    loggedInUser = await prisma.user.update({
       where: {
         email: user.emailAddresses[0].emailAddress,
       },
@@ -35,20 +41,46 @@ export const checkUser = async () => {
         clerkId: user.id,
         name: `${user.firstName} ${user.lastName}`,
         imageUrl: user.imageUrl,
-        role: 'default', 
+        role: {
+          connect: { id: selectedRole || 'defaultRoleId' }, // Connect to selected role or default role ID
+        },
+      },
+      include: {
+        role: true, // Include the role in the query
       },
     });
 
     return loggedInUser;
   }
 
-  const newUser = await db.user.create({
+  // Attempt to find the default role
+  let defaultRole = await prisma.role.findUnique({
+    where: {
+      name: 'default',
+    },
+  });
+
+  // If default role doesn't exist, create it
+  if (!defaultRole) {
+    defaultRole = await prisma.role.create({
+      data: {
+        name: 'default',
+      },
+    });
+  }
+
+  const newUser = await prisma.user.create({
     data: {
       clerkId: user.id,
       name: `${user.firstName} ${user.lastName}`,
       imageUrl: user.imageUrl,
       email: user.emailAddresses[0].emailAddress,
-      role: 'default',
+      role: {
+        connect: { id: selectedRole || defaultRole.id }, // Connect to selected role or default role ID
+      },
+    },
+    include: {
+      role: true, // Include the role in the query
     },
   });
 

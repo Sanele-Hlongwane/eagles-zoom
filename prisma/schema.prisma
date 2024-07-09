@@ -1,4 +1,4 @@
-// schema.prisma
+// Prisma schema file
 
 generator client {
   provider = "prisma-client-js"
@@ -9,14 +9,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// User model
 model User {
-  id        Int      @id @default(autoincrement())
-  clerkId   String   @unique
-  name      String
-  email     String   @unique
+  id        String  @id @default(uuid())
+  clerkId   String  @unique
+  email     String  @unique
+  name      String?
   imageUrl  String?
-  role      String   @default("user") // Provide a default value
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    String
 }
 
+// Role model
+model Role {
+  id    String @id @default(uuid())
+  name  String @unique
+  users User[]
+}
