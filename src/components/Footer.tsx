@@ -3,7 +3,7 @@ import { checkUser } from '@/lib/checkUser';
 import Link from 'next/link';
 
 const Footer = async () => {
-  const user = await checkUser();
+  const user = await checkUser(null);
   console.log(user);
 
   return (
