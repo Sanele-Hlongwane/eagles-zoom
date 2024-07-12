@@ -3,6 +3,7 @@ import '@/app/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import SideNav from './SideNav';
 import Header from './Navbar';
+import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -31,6 +32,7 @@ export default function Layout({
               {children}
             </main>
             <Toaster />
+            <Footer />
           </body>
         </html>
       </StreamVideoProvider>

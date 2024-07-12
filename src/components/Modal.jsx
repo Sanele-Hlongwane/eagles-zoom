@@ -27,11 +27,9 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { ToyBrick } from "lucide-react";
-// import { createMeeting } from "@/lib/quickButtonHandlers";
 
 const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
   const currentCall = useCall();
-
   const router = useRouter();
   const client = useStreamVideoClient();
   const now = new Date();
@@ -59,7 +57,6 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
   const createMeeting = async () => {
     if (!user || !client) {
       console.log("🚀 ~ createMeeting ~ user :", user, "client :", client);
-
       return;
     }
     setLoading(true);
@@ -70,9 +67,7 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
         100 +
         "-" +
         (Math.floor(Math.random() * 900) + 100);
-      const call = client.call("default", id); // Default was Video + Audio call //Create 3 random digit for meeting id and link after it would something like  125-851
-      // const call = client.call("default", id); // Default was Video + Audio call //Create 3 random digit for meeting id and link after it would something like  125-851
-      console.log("🚀 ~ id:", id);
+      const call = client.call("default", id); // Default was Video + Audio call //Create 3 random digit for meeting id and link after it would something like 125-851
       if (!call) {
         throw new Error("Failed to create meeting!");
       }
@@ -91,10 +86,7 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
         },
       });
 
-      console.log("🚀 ~ call:", call);
       setCall(call);
-      // router.push(`/meeting/${call.id}`);
-
       if (call) {
         router.push(`/meeting/${call?.id}`);
       }
@@ -104,25 +96,18 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
       setLoading(false);
       return call;
     } catch (error) {
-      console.log("🚀 ~ error:", error);
       setLoading(false);
       throw new Error(error);
     }
   };
 
   const scheduleMeeting = async () => {
-    console.log(scheduleMeetingDetails);
-
     if (scheduleMeetingDetails) {
-      console.log("Inside");
       navigator.clipboard.writeText(meetingLink);
       toast({ title: "Link Copied" });
     }
 
-    // Wait for createMeeting to complete
     const call = await createMeeting();
-    console.log("🚀 ~ scheduleMeeting ~ call:", call);
-
     setScheduleMeetingDetails(call);
   };
 
@@ -131,21 +116,16 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
 
     if (urlPattern.test(param)) {
       const segments = param.split("/");
-
       const id = segments.pop() || segments.pop(); // extra second one for potential tailing slash like abc.com/123/
       router.push(`/meeting/${id}`);
     } else {
-      /// IF user add only id
       router.push(`/meeting/${param}`);
     }
   };
 
   const handler = async () => {
-    console.log("modal handler run");
     switch (type) {
       case "instantMeeting":
-        console.log(initialValues);
-        console.log("modal handler run with instantMeeting");
         await createMeeting();
         break;
       case "joiningMeeting":
@@ -154,14 +134,6 @@ const Modal = ({ isOpen, onClose, title, type, buttonLabel }) => {
         }
         break;
       case "scheduleMeeting":
-        // console.log(scheduleMeetingDetails);
-        // if (scheduleMeetingDetails) {
-        //   console.log("Inside");
-        //   navigator.clipboard.writeText(meetingLink);
-        //   toast({ title: "Link Copied" });
-        // }
-        // createMeeting();
-        // setScheduleMeetingDetails(call);
         scheduleMeeting();
         break;
       case "endCall":
