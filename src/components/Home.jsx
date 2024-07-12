@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useUser } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { quickButtons } from "@/constants/constants";
@@ -55,9 +55,9 @@ export default function Home() {
     <div className="h-full flex flex-col justify-start items-center px-8 py-4 gap-y-10 bg-gray-900 text-white">
       <Modal
         isOpen={
-          (meetingType === "scheduleMeeting") ||
-          (meetingType === "joiningMeeting") ||
-          (meetingType === "instantMeeting")
+          (meetingType == "scheduleMeeting") |
+          (meetingType == "joiningMeeting") |
+          (meetingType == "instantMeeting")
         }
         title={dialogData.title}
         buttonLabel={dialogData.buttonLabel}
@@ -66,7 +66,7 @@ export default function Home() {
       />
       <div className="relative overflow-hidden w-full">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 opacity-20 rounded-lg"></div>
-        <div className="relative bg-gray-800 bg-opacity-80 backdrop-blur-md p-6 rounded-lg">
+        <div className="relative bg-gray-800 bg-opacity-30 backdrop-blur-md p-6 rounded-lg">
           <h1 className="text-3xl font-bold">
             Hello, {user?.firstName} {user?.lastName}
           </h1>
@@ -85,7 +85,7 @@ export default function Home() {
                 label={label}
                 handler={() => {
                   setMeetingType(undefined);
-                  if (type === "record") {
+                  if (type == "record") {
                     router.push("/recordings");
                   }
                   setMeetingType(type);
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
         <div className="relative w-1/2 max-w-[800px] h-full">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 opacity-20 rounded-lg"></div>
-          <div className="relative bg-gray-800 bg-opacity-80 backdrop-blur-md p-6 rounded-t-lg">
+          <div className="relative bg-gray-800 bg-opacity-30 backdrop-blur-md p-6 rounded-t-lg">
             <div className="h-32 text-3xl font-bold">
               <div className="z-40 text-xl md:text-2xl lg:text-3xl absolute bottom-2 left-2 text-gray-100 backdrop-blur-sm backdrop-brightness-90 rounded-md p-2">
                 <h1>{formattedTime}</h1>

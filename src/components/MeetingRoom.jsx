@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import {
   CallControls,
+  CallParticipantListing,
   CallParticipantsList,
   PaginatedGridLayout,
   SpeakerLayout,
@@ -14,6 +15,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -24,6 +26,7 @@ import {
   faUsersViewfinder,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { LayoutList } from "lucide-react";
 import { Button } from "./ui/button";
 import Modal from "./Modal";
 
@@ -73,7 +76,7 @@ const MeetingRoom = () => {
   };
 
   useEffect(() => {
-    if (CallingState === "left") {
+    if (CallingState == "left") {
       router.push("/");
     }
   }, [CallingState, router]);
@@ -103,7 +106,7 @@ const MeetingRoom = () => {
       <div
         className={cn(
           "hidden absolute bottom-[10vh] right-10 bg-[#19232d] z-40 backdrop-blur-sm px-3 py-5 rounded-2xl",
-          { block: showParticipants }
+          { "block": showParticipants }
         )}
       >
         <CallParticipantsList
