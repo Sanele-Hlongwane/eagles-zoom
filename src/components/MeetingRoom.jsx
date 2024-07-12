@@ -31,10 +31,12 @@ import { Button } from "./ui/button";
 import Modal from "./Modal";
 
 const MeetingRoom = () => {
+  //   this should be either grid | participants-left | partivipants-right
   const [layout, setLayout] = useState("grid");
   const [showParticipants, setShowParticipants] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
+  // https://getstream.io/video/docs/react/guides/call-and-participant-state/#participant-state-3
   const { useLocalParticipant } = useCallStateHooks();
   const localParticipant = useLocalParticipant();
 
@@ -49,6 +51,7 @@ const MeetingRoom = () => {
     localParticipant &&
     call.state.createdBy &&
     localParticipant.userId === call.state.createdBy.id;
+  // console.log("🚀 ~ MeetingRoom ~ roomOwner:", roomOwner);
 
   const CALLING_STATE_TO_LABEL = {
     [CallingState.JOINING]: "Joining",
@@ -82,7 +85,7 @@ const MeetingRoom = () => {
   }, [CallingState, router]);
 
   return (
-    <section className="w-full h-screen flex flex-col items-center justify-center overflow-hidden py-4 px-2 bg-gray-900 text-white">
+    <section className="w-full h-screen flex flex-col items-center justify-center overflow-hidden py-4 px-2">
       <Modal
         isOpen={modalOpen}
         title="End call for everyone?"
@@ -97,7 +100,8 @@ const MeetingRoom = () => {
       >
         {CallingState !== "joined" ? (
           <p className="capitalize font-bold text-xl">
-            {CALLING_STATE_TO_LABEL[CallingState] || "Joining..."}
+            {/* {CALLING_STATE_TO_LABEL[CallingState] || "Joining..."} */}
+            {CallingState}
           </p>
         ) : (
           <SelectedLayout />
@@ -105,8 +109,8 @@ const MeetingRoom = () => {
       </div>
       <div
         className={cn(
-          "hidden absolute bottom-[10vh] right-10 bg-[#19232d] z-40 backdrop-blur-sm px-3 py-5 rounded-2xl",
-          { "block": showParticipants }
+          " hidden absolute bottom-[10vh] right-10 bg-[#19232d] z-40 backdrop-blur-sm px-3 py-5 rounded-2xl",
+          { " block": showParticipants }
         )}
       >
         <CallParticipantsList
@@ -119,6 +123,12 @@ const MeetingRoom = () => {
         id="controls"
         className="flex items-center gap-4 flex-wrap justify-center mb-10"
       >
+        {/* {CallingState !== "joined" && (
+          <p className=" capitalize font-bold text-xl">
+            {CALLING_STATE_TO_LABEL[CallingState]}
+          </p>
+        )} */}
+
         <CallControls
           onLeave={() => {
             console.log("leaved");
@@ -126,6 +136,7 @@ const MeetingRoom = () => {
           }}
         />
         <div className="flex h-16 mb-0 justify-center items-center">
+          {" "}
           {roomOwner && (
             <Button
               variant="destructive"
@@ -137,7 +148,7 @@ const MeetingRoom = () => {
           )}
           <DropdownMenu>
             <div className="flex items-center">
-              <DropdownMenuTrigger className="cursor-pointer rounded-3xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
+              <DropdownMenuTrigger className="cursor-pointer rounded-3xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
                 <Image
                   src="/icons/gridView.svg"
                   width={25}
@@ -167,6 +178,7 @@ const MeetingRoom = () => {
               setShowParticipants(!showParticipants);
             }}
           >
+            {" "}
             <FontAwesomeIcon
               icon={faUsersViewfinder}
               size="xl"
