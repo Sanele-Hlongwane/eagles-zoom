@@ -21,14 +21,16 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    
       <StreamVideoProvider>
         <div className={roboto.className}>
-          <SideNav />
-          <main className='container'>{children}</main>
+          
+          <main className="w-full h-[94vh] flex justify-start items-start bg-foreground text-gray-100>
+              <SideNav />
+          {children}</main>
           <ToastContainer />
         </div>
       </StreamVideoProvider>
-    </ClerkProvider>
+    
   );
 }
