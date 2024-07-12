@@ -3,7 +3,7 @@ import { newMeetingHandler } from "@/lib/quickButtonHandlers";
 export const tabs = [
   {
     icon: "/icons/home.svg",
-    route: "/",
+    route: "/video-call",
     label: "Home",
   },
   {
