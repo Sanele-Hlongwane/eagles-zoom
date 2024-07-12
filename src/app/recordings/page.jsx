@@ -1,5 +1,6 @@
 "use client";
 
+import Layout from "@/components/layout";
 import Loading from "@/components/Loading";
 import MeetingCard from "@/components/MeetingCard";
 import { useGetCallById } from "@/hooks/useGetCallById";
@@ -34,7 +35,8 @@ const Recordings = () => {
     fetchRecordings();
   }, [recordings]);
   return (
-    <div className="p-3 w-full h-full overflow-y-scroll">
+   <Layout>
+    <div className="p-3 w-full h-full overflow-y-scroll bg-gray-900 text-white">
       <div className="font-bold text-4xl my-[30px]">Meeting Records</div>
       <div
         id="meetingRecordCardContainer"
@@ -58,6 +60,7 @@ const Recordings = () => {
           })}
       </div>
     </div>
+   </Layout>
   );
 };
 
