@@ -12,6 +12,7 @@ export default function App() {
     { name: "About", link: "/About" },
     { name: "Services", link: "/Services" },
     { name: "Contact Us", link: "/Contact" },
+    { name: "Meetings", link: "/video-call" },
   ];
 
   const handleMenuItemClick = () => {

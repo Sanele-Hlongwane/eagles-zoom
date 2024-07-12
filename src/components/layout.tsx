@@ -1,21 +1,21 @@
-import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import '@/app/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
-import Header from '../components/Navbar';
+import SideNav from './SideNav';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from '../components/Footer';
+
 import '@stream-io/video-react-sdk/dist/css/styles.css';
 import StreamVideoProvider from "@/providers/StreamClientProvider";
+
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Eagles Ring',
-  description: 'Find Investments ooportunities and investors',
+  description: 'Find Investments opportunities and investors',
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,14 +23,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <StreamVideoProvider>
-        <html lang='en'>
-          <body className={roboto.className}>
-            <Header />
-            <main className='container'>{children}</main>
-            <ToastContainer />
-            <Footer />
-          </body>
-        </html>
+        <div className={roboto.className}>
+          <SideNav />
+          <main className='container'>{children}</main>
+          <ToastContainer />
+        </div>
       </StreamVideoProvider>
     </ClerkProvider>
   );
