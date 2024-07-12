@@ -2,7 +2,7 @@ import { Roboto } from 'next/font/google';
 import '@/app/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import SideNav from './SideNav';
-import Header from './NavBar';
+import Header from './Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Toaster } from "@/components/ui/toaster";
